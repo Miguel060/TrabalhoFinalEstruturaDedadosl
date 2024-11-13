@@ -210,6 +210,17 @@ void lerArquivoEInserirNomes(char* nomeArquivo) {
 
     fclose(arquivo);
 }
+void liberarMemoria() {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        le* aux = hashTable[i];
+        while (aux != NULL) {
+            le* temp = aux;
+            aux = aux->prox;
+            free(temp);
+        }
+        hashTable[i] = NULL;
+    }
+}
 
 int main() {
     for (int i = 0; i < TABLE_SIZE; i++) {
@@ -234,6 +245,7 @@ int main() {
     removerNome("LUCAS");
     removerNome("JOAO");
     printf(getFiltroPorIndice(25));
+    liberarMemoria();
 
     return 0;
 }
