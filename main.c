@@ -233,6 +233,7 @@ int main() {
     printf("\nRemovendo nomes...\n");
     removerNome("LUCAS");
     removerNome("JOAO");
+    printf(getFiltroPorIndice(25));
 
     return 0;
 }
